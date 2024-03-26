@@ -13,13 +13,14 @@ const mainStyles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    as: 'main',
 };
 
 export const Layout = () => {
     return (
         <Box sx={baseStyles}>
             <Navbar />
-            <Box sx={mainStyles} as='main'>
+            <Box sx={mainStyles}>
                 <Outlet />
             </Box>
         </Box>

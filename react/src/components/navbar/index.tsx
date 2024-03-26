@@ -1,4 +1,4 @@
-import { Box, Flex, HStack, Link as CustomLink } from '@chakra-ui/react';
+import { Box, Flex, HStack, Link } from '@chakra-ui/react';
 import { NavLink } from 'react-router-dom';
 
 const linksSettings = [
@@ -10,46 +10,44 @@ const baseStyles = {
     position: 'sticky',
     top: '0px',
     height: '70px',
-    backgroundColor: 'blue',
+    backgroundColor: 'navbar.color',
     zIndex: '5',
     width: '100%',
+    px: '4'
 };
 
-const hoverStyles = {
-    textDecoration: 'none',
-    bg: 'gray.200',
-    transitionDuration: '.5s',
+const flexContainerStyles = {
+    height: '100%',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
 };
 
-const activeStyles = {
-    textDecoration: 'none',
-    bg: 'red.200',
-    color: 'red.200',
+const linkStyles = {
+    px: 2,
+    py: 1,
+    rounded: 'md',
+    _activeLink: {
+        textDecoration: 'none',
+        bg: '#020070',
+        color: '#bc3636',
+    },
 };
 
 export const Navbar = () => {
     return (
-        <Box px={4} sx={baseStyles}>
-            <Flex
-                w="100%"
-                h="100%"
-                alignItems="center"
-                justifyContent="flex-end"
-            >
+        <Box sx={baseStyles}>
+            <Flex {...flexContainerStyles}>
                 <HStack as="nav" spacing={6}>
                     {linksSettings.map(({ name, path }, index) => (
-                        <CustomLink
+                        <Link
+                            {...linkStyles}
                             key={index}
                             as={NavLink}
                             to={path}
-                            px={2}
-                            py={1}
-                            rounded="md"
-                            _hover={hoverStyles}
-                            _activeLink={activeStyles}
                         >
                             {name}
-                        </CustomLink>
+                        </Link>
                     ))}
                 </HStack>
             </Flex>
