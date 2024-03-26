@@ -5,12 +5,12 @@ import { loadLocalStorageData } from './helpers';
 
 export const store = configureStore({
     reducer: {
-        todos: todoReducer,
+        todo: todoReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().prepend(localStorageMiddleware.middleware),
     preloadedState: {
-        todos: { todos: loadLocalStorageData() },
+        todo: { todos: loadLocalStorageData() },
     },
 });
 
